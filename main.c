@@ -8,7 +8,6 @@
  *
  * Return: 0 on success, 1 on failure.
  */
-
 #include "monty.h"
 #include <ctype.h>  
 
@@ -19,14 +18,16 @@ int main(int argc, char *argv[])
     stack_t *stack = NULL;
     if (argc != 2)
     {
-        printf("Usage: %s file\n", argv[0]);
+        fprintf(stderr, "Usage: %s file\n", argv[0]);
         return (1);
     }
 
+  
+
     if ((file = fopen(argv[1], "r")) == NULL)
     {
-        printf("Error opening file: %s\n", argv[1]);
-        return (1);+
+        fprintf(stderr, "Error opening file: %s\n", argv[1]);
+        return (1);
     }
 
     while (fgets(line, sizeof(line), file) != NULL)
