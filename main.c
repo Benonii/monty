@@ -1,0 +1,65 @@
+#include "monty.h"
+#include <string.h>
+
+/**
+ * main - entry point
+ * @ac: number of arguments
+ * @av: list of arguments
+ *
+ * Return: 0 if success, 1 if fail;
+ */
+
+int main(int ac, char **av)
+{
+	char line[100] = "", *token = NULL, *delim = " \n\t\r";
+	int i, fd = 0;
+	unsigned int l = 0;
+	stack_t **stack = malloc(sizeof(stack_t));
+
+	instruction_t funcs[] = {
+		{"push", push},
+		{"pall", pall},
+       		{"pint", pint},
+		{"pop", pop},
+       		{"swap", swap},
+		{"add", add},
+		{"nop", nop} };
+	*stack = NULL;
+
+	if (ac != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE); }
+	else
+	{
+		fd = open(av[1], O_RDONLY);
+		if (fd == -1)
+		{
+			fprintf(stderr, "Error: Can't open file %s\n", av[1]);
+			exit(EXIT_FAILURE); }
+		while (readline(fd, line, sizeof(line)) > 0)
+		{
+			token = strtok(line, delim);
+			op[0] = token;
+			token = strtok(NULL, delim);
+			op[1] = token;
+			i = 0;
+			while (i < 7)
+			{
+				if (strcmp(funcs[i].opcode, op[0]) == 0)
+				{
+					funcs[i].f(stack, l);
+					break;
+				}
+				i++;
+			}
+			if (i == 7)
+			{
+				fprintf(stderr, "L%d: unknown instruction %s\n", l, op[0]);
+				exit(EXIT_FAILURE);
+			}
+			l++;
+		}
+	}
+	free(stack);
+	return (EXIT_SUCCESS); }
