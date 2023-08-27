@@ -16,6 +16,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (op[1] == NULL)
 	{
 		fprintf(stderr, "L%d: usage push integer\n", line_number);
+		free(temp);
 		exit (EXIT_FAILURE);
 	}
 
@@ -32,5 +33,6 @@ void push(stack_t **stack, unsigned int line_number)
 		*stack = temp;
 	}
 
+	free(temp);
 	exit (EXIT_SUCCESS);
 }
