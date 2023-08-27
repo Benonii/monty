@@ -13,7 +13,7 @@ void pall(stack_t **stack, unsigned int line_number)
 	stack_t *top = NULL;
 
 	if (stack == NULL || *stack == NULL)
-		return;
+		exit(EXIT_FAILURE);
 
 	top = *stack;
 	while (top != NULL)
@@ -22,4 +22,6 @@ void pall(stack_t **stack, unsigned int line_number)
 		top = top->next;
 	}
 	(void) line_number;
+
+	exit(EXIT_SUCCESS);
 }

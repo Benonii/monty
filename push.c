@@ -16,7 +16,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (op[1] == NULL)
 	{
 		fprintf(stderr, "L%d: usage push integer\n", line_number);
-		return;
+		exit (EXIT_FAILURE);
 	}
 
 	temp->n = atoi(op[1]);
@@ -31,4 +31,6 @@ void push(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = temp;
 		*stack = temp;
 	}
+
+	exit (EXIT_SUCCESS);
 }
