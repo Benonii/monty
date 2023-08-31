@@ -29,6 +29,7 @@ int main(int ac, char **av)
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
+		free(stack);
 		exit(EXIT_FAILURE); }
 	else
 	{
@@ -56,10 +57,11 @@ int main(int ac, char **av)
 			if (i == 7)
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", l, op[0]);
+				free(*stack);
 				exit(EXIT_FAILURE);
 			}
 			l++;
 		}
 	}
-	free(stack);
+	free(*stack);
 	return (EXIT_SUCCESS); }
