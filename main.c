@@ -28,6 +28,7 @@ int main(int ac, char **av)
 		{"mul", mul},
 		{"mod", mod},
 		{"pchar", pchar},
+		{"pstr", pstr}
 	};
 
 	if (!stack)
@@ -56,7 +57,7 @@ int main(int ac, char **av)
 			token = strtok(NULL, delim);
 			op[1] = token;
 			i = 0;
-			while (i < 11)
+			while (i < 12)
 			{
 				if (strcmp(funcs[i].opcode, op[0]) == 0)
 				{
@@ -65,7 +66,7 @@ int main(int ac, char **av)
 				}
 				i++;
 			}
-			if (i == 11)
+			if (i == 12)
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", l, op[0]);
 				free_stack(*stack);
