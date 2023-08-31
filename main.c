@@ -23,7 +23,8 @@ int main(int ac, char **av)
 		{"pop", pop},
        		{"swap", swap},
 		{"add", add},
-		{"nop", nop} };
+		{"nop", nop},
+       		{"sub", sub}, };
 
 	if (!stack)
 	{
@@ -51,7 +52,7 @@ int main(int ac, char **av)
 			token = strtok(NULL, delim);
 			op[1] = token;
 			i = 0;
-			while (i < 7)
+			while (i < 8)
 			{
 				if (strcmp(funcs[i].opcode, op[0]) == 0)
 				{
@@ -60,7 +61,7 @@ int main(int ac, char **av)
 				}
 				i++;
 			}
-			if (i == 7)
+			if (i == 8)
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", l, op[0]);
 				free_stack(*stack);
