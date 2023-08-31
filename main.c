@@ -65,9 +65,9 @@ int main(int ac, char **av)
 				fprintf(stderr, "L%d: unknown instruction %s\n", l, op[0]);
 				free_stack(*stack);
 				free(stack);
+				l++;
 				exit(EXIT_FAILURE);
 			}
-			l++;
 		}
 	}
 	free_stack(*stack);
