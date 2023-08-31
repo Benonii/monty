@@ -13,7 +13,7 @@ int main(int ac, char **av)
 {
 	char line[100] = "", *token = NULL, *delim = " \n\t\r";
 	int i, fd = 0;
-	unsigned int l = 0;
+	unsigned int l = 2;
 	stack_t **stack = malloc(sizeof(stack_t));
 
 	instruction_t funcs[] = {
