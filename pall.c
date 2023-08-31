@@ -22,6 +22,5 @@ void pall(stack_t **stack, unsigned int line_number)
 		top = top->next;
 	}
 	(void) line_number;
-
-	exit(EXIT_SUCCESS);
+	free(top);
 }

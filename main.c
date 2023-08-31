@@ -24,6 +24,12 @@ int main(int ac, char **av)
        		{"swap", swap},
 		{"add", add},
 		{"nop", nop} };
+
+	if (!stack)
+	{
+		fprintf(stderr, "Error: malloc failelure\n");
+		return (EXIT_FAILURE);
+	}
 	*stack = NULL;
 
 	if (ac != 2)
@@ -57,11 +63,13 @@ int main(int ac, char **av)
 			if (i == 7)
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", l, op[0]);
-				free(*stack);
+				free_stack(*stack);
+				free(stack);
 				exit(EXIT_FAILURE);
 			}
 			l++;
 		}
 	}
-	free(*stack);
+	free_stack(*stack);
+	free(stack);
 	return (EXIT_SUCCESS); }
